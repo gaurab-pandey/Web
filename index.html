@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOM manipulation</title>
+  <style>
+   
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f5f5f5;
+    }
+
+    .req {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: white;
+      box-shadow: 0 0 5px 0 #000;
+      border-radius: 12px;
+      overflow: hidden;
+      padding: 20px;
+      width: 90%; /*Defult or for mobile */
+      max-width: 400px; /*  for larger screens */
+    }
+
+    .req img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .req h1 {
+      margin: 15px 0;
+      font-size: 1.5em;
+      text-align: center;
+    }
+
+    .req button {
+      width: 100%;
+      font-size: 1em;
+      padding: 10px 15px;
+      border: 1px solid grey;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.3s ease;
+    }
+
+    .req button:nth-of-type(1) {
+      color: #fff;
+      background-color: rgb(68, 68, 216);
+    }
+
+    .req button:nth-of-type(2) {
+      background-color: #fff;
+      color: #000;
+    }
+
+    .req button:hover {
+      opacity: 0.9;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1em;
+      font-weight: bold;
+      display: none;
+    }
+
+    .message.success {
+      color: rgb(134, 246, 134);
+    }
+
+    .message.error {
+      color: rgb(225, 11, 11);
+    }
+
+    /* Responsive  */
+    @media screen and (min-width: 768px) {
+      .req {
+        width: 50%; /* Adjust for tablets */
+      }
+
+      .req h1 {
+        font-size: 1.8em;
+      }
+
+      .req button {
+        font-size: 1.1em;
+        padding: 12px 20px;
+      }
+
+      .message {
+        font-size: 1.1em;
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      .req {
+        width: 30%; /* Adjust for laptop */
+      }
+
+      .req h1 {
+        font-size: 2em;
+      }
+
+      .req button {
+        font-size: 1.2em;
+        padding: 14px 25px;
+      }
+
+      .message {
+        font-size: 1.2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="req">
+    <img
+      src="bae6ee176434ff2774808ad29de2a6e8.jpg"
+      alt="Profile Picture"
+    />
+    <h1>Chill Guy</h1>
+    <button id="c">Confirm Request</button>
+    <button id="d">Delete Request</button>
+    <p id="message" class="message"></p>
+  </div>
+
+  <script>
+   
+    const confirmBtn = document.getElementById("c");
+    const deleteBtn = document.getElementById("d");
+    const message = document.getElementById("message");
+
+    // Confirm Button
+    confirmBtn.onclick = () => {
+      confirmBtn.style.display = "none";
+      deleteBtn.style.display = "none";
+      message.textContent = "Request has been accepted.";
+      message.className = "message success";
+      message.style.display = "block";
+    };
+
+    // Delete Button
+    deleteBtn.onclick = () => {
+      confirmBtn.style.display = "none";
+      deleteBtn.style.display = "none";
+      message.textContent = "Request has been deleted.";
+      message.className = "message error";
+      message.style.display = "block";
+    };
+  </script>
+</body>
+</html>
